@@ -52,7 +52,6 @@ app/       reemplazo: motor determinista, sin llamadas al original
   perfiles.py  perfil de comportamiento por versión del servicio (PERFIL=v_manana)
   catalogo.py  códigos de error y textos exactos
   comandos.py  manejadores puros (estado, args) -> (status, cuerpo, estado')
-recon/     perfil del terreno y registro de fricción de la exploración
 ```
 
 Para medir se usan tres herramientas:
