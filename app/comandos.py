@@ -33,8 +33,9 @@ class Estado:
 Resultado = tuple[int, dict, Estado]
 
 # Monto: entero positivo sin ceros a la izquierda ni signo (log 872-886: 0, -5, 007, +5, 1e3,
-# 1,000, 0x10, espacios y dígitos de ancho completo dan E303). 10 dígitos pasan y 15 no:
-# SUPUESTO el tope exacto en 10 dígitos.
+# 1,000, 0x10, espacios y dígitos de ancho completo dan E303). 10 dígitos pasan (log 877) y 11 dan
+# E303 en DEPOSITO (log 1146-1150, 1738). En TRANSFER, 11 dígitos dan E303 (log 2265)
+# y 10 pasan el formato y llegan al límite E506 (log 2266).
 MONTO = re.compile(r"[1-9][0-9]{0,9}")
 
 
@@ -143,5 +144,6 @@ def anula(estado: Estado, args: list[str]) -> Resultado:
 
 def halt(estado: Estado, args: list[str]) -> Resultado:
     # Comando oculto: con 1 argumento responde 409 E520 y no cambia el estado (log 1229, 1234-1235).
-    # SUPUESTO: igual para cualquier argumento; no se sabe cómo es el reenvío «con confirmación».
+    # Visto con AC-0001, AC-1, ac-0001, AC-0002 y AC-0003 (log 1229, 1253, 1563, 1345, 1407). El reenvío
+    # «con confirmación» no se probó a propósito (servicio compartido): SUPUESTO que todo HALT da E520.
     return (*cat.error("E520"), estado)

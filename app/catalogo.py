@@ -13,7 +13,7 @@ ERRORES: dict[str, tuple[int, str]] = {
     "E001": (401, "no autorizado"),          # log 1, 2, 4, 5, 6
     "E404": (404, "ruta desconocida"),       # log 7, 8, 9, 141, 142, 144-148
     "E100": (400, "json inválido"),          # log 10, 1169, 1176, 1181, 1663
-    "E101": (413, "cuerpo demasiado grande"),  # log 1662, 1690-1705 (más de 8192 bytes)
+    "E101": (413, "cuerpo demasiado grande"),  # log 1662, 1690, 1691, 1694, 1697, 1698, 1700, 1702, 1704, 1705 (más de 8192 bytes)
     "E102": (400, "falta m"),                # log 11, 1170-1173, 1175, 1177, 1179
     "E103": (400, "falta control"),          # log 12, 715, 725
     "E104": (400, "segmento vacío"),         # log 713, 716, 726
@@ -27,7 +27,7 @@ ERRORES: dict[str, tuple[int, str]] = {
     "E402": (404, "operación inexistente"),  # log 887-899: ANULA de OP inexistente o mal formada
     "E506": (422, "límite excedido"),        # ejemplo 9
     "E507": (422, "saldo insuficiente"),     # ejemplo 16
-    "E510": (409, "cuenta bloqueada"),       # log 955-1063: 3 rechazos seguidos de TRANSFER
+    "E510": (409, "cuenta bloqueada"),       # log 850, 962, 980, 1016, 1021: tras 3 rechazos E506/E507 seguidos
     "E520": (409, "operación destructiva: detiene el servicio; reenvía con confirmación"),  # log 1229
 }
 

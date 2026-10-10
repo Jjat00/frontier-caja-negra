@@ -90,7 +90,7 @@ def control_presente(ctx: Ctx) -> Respuesta | None:
         return cat.error("E103")
     ctx.nombre = ctx.segmentos[0]
     # Sin distinguir mayúsculas: medido en CONSULTA (ejemplo 11; log 1447), PING (log 730),
-    # TRANSFER (log 1404, 1550) y ANULA (log 1655); en ALTA, DEPOSITO y HALT es inferencia.
+    # TRANSFER (log 1404, 1550), ANULA (log 1655), DEPOSITO (log 1768), ALTA (log 2139) y HALT (log 2267).
     # El nombre no se recorta (log 731-732).
     ctx.comando = ctx.perfil.comandos.get(ctx.nombre.upper())
     return None

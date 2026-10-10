@@ -39,8 +39,9 @@ class CajaNegra:
         self.perfil = perfiles.activo()
         self.token = os.environ.get("TOKEN", "")
         self.estado = Estado()
-        # SUPUESTO: X-Req cuenta los POST /msg autenticados (incluidos errores de validación),
-        # no se reinicia con __reset y no sale en 401/404 (log 10-12, 128-133). No se evalúa.
+        # X-Req cuenta los POST /msg autenticados, incluidos los errores de validación (log 10-12, 128-133) y los
+        # 404 de negocio E401/E402 (log 181, 835). No se reinicia con __reset (log 134-135, 143-150) y no sale en
+        # E001 de auth (log 1, 4, 5) ni en E404 de ruta (log 7, 131). No se evalúa.
         self.x_req = 0
 
     def autorizado(self, request: Request) -> bool:
