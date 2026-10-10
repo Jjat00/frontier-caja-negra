@@ -61,25 +61,48 @@ class Lab:
 
     def raw(self, method: str, path: str, *, body=None, content=None, token: str | None = "default",
             headers: dict | None = None) -> httpx.Response:
-        """Request sin registrar (para explorar rutas, métodos y headers)."""
+        """Transporte interno sin registro. Para explorar se usa siempre send() o reset()."""
         self._throttle()
         h = dict(headers or {})
         tok = self.token if token == "default" else token
         if tok is not None:
             h["Authorization"] = f"Bearer {tok}"
-        resp = self.client.request(method, path, json=body, content=content, headers=h)
-        if resp.headers.get("X-Frontier-Infra") == "rate-limit":
-            time.sleep(1)
-            return self.raw(method, path, body=body, content=content, token=token, headers=headers)
-        return resp
+        return self.client.request(method, path, json=body, content=content, headers=h)
 
-    def reset(self, seq: str) -> int:
+    def reset(self, seq: str, hipotesis: str = "reset: estado inicial del token") -> int:
+        """Empieza una secuencia nueva. El reset también queda registrado en el log."""
         self.seq = seq
-        return self.raw("POST", "/__reset").status_code
+        return self.send(None, hipotesis, path="/__reset")["status"]
 
-    def send(self, request, hipotesis: str, *, path: str = "/msg", method: str = "POST", **kw) -> dict:
-        """Manda un request y lo registra en el log. `request` es el cuerpo JSON."""
-        resp = self.raw(method, path, body=request, **kw)
+    def send(self, request, hipotesis: str, *, path: str = "/msg", method: str = "POST",
+             content: str | bytes | None = None, auth: str = "propio", **kw) -> dict:
+        """Manda un request y lo registra en el log.
+
+        `request` es el cuerpo JSON; para cuerpos que no son JSON se pasa `content` (texto crudo)
+        y `request` se registra como ese texto. `auth` describe la variante de autenticación
+        usada (propio, sin_token, token_invalido, ...) y queda en el log si no es la normal.
+        """
+        body_mode = "raw" if content is not None else ("json" if request is not None else "none")
+        logged = content if isinstance(content, str) else (
+            content.decode("utf-8", "replace") if content is not None else request)
+        meta = {}
+        if path != "/msg" or method != "POST":
+            meta["ruta"] = f"{method} {path}"
+        if auth != "propio":
+            meta["auth"] = auth
+        if kw.get("headers"):
+            meta["headers"] = kw["headers"]
+        while True:
+            if content is not None:
+                resp = self.raw(method, path, content=content, **kw)
+            else:
+                resp = self.raw(method, path, body=request, **kw)
+            if resp.headers.get("X-Frontier-Infra") != "rate-limit":
+                break
+            self._write({"seq": self.seq, "x_req": resp.headers.get("X-Req"), "infra": "rate-limit",
+                         "hipotesis": f"(reintento) {hipotesis}", "request": logged,
+                         "status": resp.status_code, "response": resp.text, "body_mode": body_mode, **meta})
+            time.sleep(1)
         try:
             body = resp.json()
         except ValueError:
@@ -90,16 +113,23 @@ class Lab:
                 "seq": self.seq,
                 "x_req": resp.headers.get("X-Req"),
                 "hipotesis": hipotesis,
-                "request": request,
+                "request": logged,
                 "status": resp.status_code,
                 "response": body,
+                "body_mode": body_mode,
+                **meta,
             }
-            if path != "/msg" or method != "POST":
-                row["ruta"] = f"{method} {path}"
             with self.log.open("a") as f:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
             self._last_id = row["id"]
         return row
+
+    def _write(self, row: dict) -> None:
+        """Escribe una fila extra (p. ej. una respuesta de infraestructura) con el siguiente id."""
+        with _lock:
+            row = {"id": self._next_id(), **row}
+            with self.log.open("a") as f:
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
     def msg(self, m: str, hipotesis: str) -> dict:
         return self.send({"m": m}, hipotesis)

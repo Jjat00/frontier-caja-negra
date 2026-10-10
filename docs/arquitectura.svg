@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Poppins, Inter, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#68ddfd"/><stop offset="1" stop-color="#9e8cfc"/></linearGradient>
+    <linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#68ddfd"/><stop offset="1" stop-color="#9e8cfc"/></linearGradient>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8984"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f87171"/>
+    </marker>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Poppins:wght@400;500;600;700&amp;display=swap');
+      .t{font-size:13px;fill:#ededed}
+      .s{font-size:11.5px;fill:#a1a09a}
+      .h{font-size:15px;font-weight:700;fill:#ededed}
+      .k{font-size:11px;font-weight:700;fill:url(#g);letter-spacing:.14em}
+      .ln{stroke:#8a8984;stroke-width:1.5;fill:none}
+      .step{fill:#161615;stroke:#9e8cfc;stroke-width:1.2}
+    </style>
+  </defs>
+
+  <rect width="1280" height="800" fill="#0a0a0a"/>
+  <g id="plexus">
+  <line x1="1006.3" y1="19.2" x2="1045.6" y2="69.2" stroke="#9e8cfc" stroke-opacity="0.03" stroke-width=".8"/>
+  <line x1="1006.3" y1="19.2" x2="1000.3" y2="68.4" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="1006.3" y1="19.2" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.03" stroke-width=".8"/>
+  <line x1="1006.3" y1="19.2" x2="1002.5" y2="51.3" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="1006.3" y1="19.2" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="1006.3" y1="19.2" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1089.0" y2="35.1" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1124.7" y2="78.1" stroke="#9e8cfc" stroke-opacity="0.02" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1105.1" y2="37.4" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1129.2" y2="35.6" stroke="#9e8cfc" stroke-opacity="0.24" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1093.6" y2="12.6" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.21" stroke-width=".8"/>
+  <line x1="1133.9" y1="13.4" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.18" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1045.6" y2="69.2" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1124.7" y2="78.1" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1105.1" y2="37.4" stroke="#9e8cfc" stroke-opacity="0.27" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1129.2" y2="35.6" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1093.6" y2="12.6" stroke="#9e8cfc" stroke-opacity="0.24" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="1089.0" y1="35.1" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="894.6" y2="40.1" stroke="#9e8cfc" stroke-opacity="0.30" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="907.2" y2="14.7" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="928.3" y2="24.5" stroke="#9e8cfc" stroke-opacity="0.18" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="936.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.11" stroke-width=".8"/>
+  <line x1="902.6" y1="45.6" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.24" stroke-width=".8"/>
+  <line x1="894.6" y1="40.1" x2="907.2" y2="14.7" stroke="#9e8cfc" stroke-opacity="0.21" stroke-width=".8"/>
+  <line x1="894.6" y1="40.1" x2="928.3" y2="24.5" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="894.6" y1="40.1" x2="936.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.11" stroke-width=".8"/>
+  <line x1="894.6" y1="40.1" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="894.6" y1="40.1" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.26" stroke-width=".8"/>
+  <line x1="907.2" y1="14.7" x2="928.3" y2="24.5" stroke="#9e8cfc" stroke-opacity="0.23" stroke-width=".8"/>
+  <line x1="907.2" y1="14.7" x2="936.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.20" stroke-width=".8"/>
+  <line x1="907.2" y1="14.7" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="907.2" y1="14.7" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.30" stroke-width=".8"/>
+  <line x1="1045.6" y1="69.2" x2="1105.1" y2="37.4" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="1045.6" y1="69.2" x2="1000.3" y2="68.4" stroke="#9e8cfc" stroke-opacity="0.12" stroke-width=".8"/>
+  <line x1="1045.6" y1="69.2" x2="1002.5" y2="51.3" stroke="#9e8cfc" stroke-opacity="0.12" stroke-width=".8"/>
+  <line x1="1045.6" y1="69.2" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1045.6" y1="69.2" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="928.3" y1="24.5" x2="936.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.29" stroke-width=".8"/>
+  <line x1="928.3" y1="24.5" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.18" stroke-width=".8"/>
+  <line x1="928.3" y1="24.5" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.22" stroke-width=".8"/>
+  <line x1="928.3" y1="24.5" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.08" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1105.1" y2="37.4" stroke="#9e8cfc" stroke-opacity="0.12" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1129.2" y2="35.6" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1189.8" y2="59.7" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1124.7" y1="78.1" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.04" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1129.2" y2="35.6" stroke="#9e8cfc" stroke-opacity="0.23" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1093.6" y2="12.6" stroke="#9e8cfc" stroke-opacity="0.21" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.11" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1105.1" y1="37.4" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.05" stroke-width=".8"/>
+  <line x1="1260.7" y1="11.4" x2="1214.8" y2="29.4" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="1260.7" y1="11.4" x2="1262.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.32" stroke-width=".8"/>
+  <line x1="1214.8" y1="29.4" x2="1189.8" y2="59.7" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1214.8" y1="29.4" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="1214.8" y1="29.4" x2="1262.3" y2="16.7" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="936.3" y1="16.7" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="936.3" y1="16.7" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.18" stroke-width=".8"/>
+  <line x1="936.3" y1="16.7" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="1000.3" y1="68.4" x2="950.5" y2="51.0" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="1000.3" y1="68.4" x2="1002.5" y2="51.3" stroke="#9e8cfc" stroke-opacity="0.26" stroke-width=".8"/>
+  <line x1="1000.3" y1="68.4" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="1000.3" y1="68.4" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.20" stroke-width=".8"/>
+  <line x1="950.5" y1="51.0" x2="903.2" y2="23.2" stroke="#9e8cfc" stroke-opacity="0.08" stroke-width=".8"/>
+  <line x1="950.5" y1="51.0" x2="1002.5" y2="51.3" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="950.5" y1="51.0" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.23" stroke-width=".8"/>
+  <line x1="1129.2" y1="35.6" x2="1093.6" y2="12.6" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="1129.2" y1="35.6" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.27" stroke-width=".8"/>
+  <line x1="1129.2" y1="35.6" x2="1189.8" y2="59.7" stroke="#9e8cfc" stroke-opacity="0.02" stroke-width=".8"/>
+  <line x1="1129.2" y1="35.6" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.06" stroke-width=".8"/>
+  <line x1="1129.2" y1="35.6" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.17" stroke-width=".8"/>
+  <line x1="1093.6" y1="12.6" x2="1145.4" y2="39.6" stroke="#9e8cfc" stroke-opacity="0.06" stroke-width=".8"/>
+  <line x1="1093.6" y1="12.6" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="1093.6" y1="12.6" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.05" stroke-width=".8"/>
+  <line x1="1145.4" y1="39.6" x2="1189.8" y2="59.7" stroke="#9e8cfc" stroke-opacity="0.11" stroke-width=".8"/>
+  <line x1="1145.4" y1="39.6" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="1145.4" y1="39.6" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.24" stroke-width=".8"/>
+  <line x1="1002.5" y1="51.3" x2="1056.7" y2="30.2" stroke="#9e8cfc" stroke-opacity="0.06" stroke-width=".8"/>
+  <line x1="1002.5" y1="51.3" x2="975.2" y2="50.5" stroke="#9e8cfc" stroke-opacity="0.21" stroke-width=".8"/>
+  <line x1="1056.7" y1="30.2" x2="1084.8" y2="72.8" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="1189.8" y1="59.7" x2="1164.5" y2="29.3" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <circle cx="1006.3" cy="19.2" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1133.9" cy="13.4" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1089.0" cy="35.1" r="1.6" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="902.6" cy="45.6" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="894.6" cy="40.1" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="907.2" cy="14.7" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="1045.6" cy="69.2" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="928.3" cy="24.5" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="1124.7" cy="78.1" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="1105.1" cy="37.4" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1260.7" cy="11.4" r="1.2" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="1214.8" cy="29.4" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="936.3" cy="16.7" r="2.1" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1000.3" cy="68.4" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="950.5" cy="51.0" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="1129.2" cy="35.6" r="2.1" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="1093.6" cy="12.6" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="903.2" cy="23.2" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="1145.4" cy="39.6" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="1002.5" cy="51.3" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1056.7" cy="30.2" r="1.6" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="1189.8" cy="59.7" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="975.2" cy="50.5" r="1.2" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="1084.8" cy="72.8" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1164.5" cy="29.3" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="1262.3" cy="16.7" r="2.1" fill="#68ddfd" fill-opacity=".8"/>
+  <line x1="226.9" y1="790.8" x2="278.2" y2="753.3" stroke="#9e8cfc" stroke-opacity="0.03" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="228.9" y2="758.9" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="217.8" y2="756.5" stroke="#9e8cfc" stroke-opacity="0.17" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="185.7" y2="751.3" stroke="#9e8cfc" stroke-opacity="0.06" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.20" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.24" stroke-width=".8"/>
+  <line x1="226.9" y1="790.8" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.17" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="228.9" y2="758.9" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="306.1" y2="780.3" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="217.8" y2="756.5" stroke="#9e8cfc" stroke-opacity="0.05" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="298.0" y2="775.5" stroke="#9e8cfc" stroke-opacity="0.20" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.15" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.18" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="278.2" y1="753.3" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="217.8" y2="756.5" stroke="#9e8cfc" stroke-opacity="0.29" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="166.6" y2="752.3" stroke="#9e8cfc" stroke-opacity="0.04" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="185.7" y2="751.3" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.30" stroke-width=".8"/>
+  <line x1="228.9" y1="758.9" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.33" stroke-width=".8"/>
+  <line x1="91.2" y1="766.5" x2="63.2" y2="752.6" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="91.2" y1="766.5" x2="77.2" y2="775.0" stroke="#9e8cfc" stroke-opacity="0.27" stroke-width=".8"/>
+  <line x1="306.1" y1="780.3" x2="362.4" y2="745.6" stroke="#9e8cfc" stroke-opacity="0.02" stroke-width=".8"/>
+  <line x1="306.1" y1="780.3" x2="298.0" y2="775.5" stroke="#9e8cfc" stroke-opacity="0.30" stroke-width=".8"/>
+  <line x1="306.1" y1="780.3" x2="360.6" y2="782.0" stroke="#9e8cfc" stroke-opacity="0.08" stroke-width=".8"/>
+  <line x1="306.1" y1="780.3" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="306.1" y1="780.3" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.27" stroke-width=".8"/>
+  <line x1="533.0" y1="779.1" x2="466.8" y2="792.5" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="533.0" y1="779.1" x2="515.0" y2="779.0" stroke="#9e8cfc" stroke-opacity="0.26" stroke-width=".8"/>
+  <line x1="533.0" y1="779.1" x2="532.0" y2="767.0" stroke="#9e8cfc" stroke-opacity="0.29" stroke-width=".8"/>
+  <line x1="217.8" y1="756.5" x2="166.6" y2="752.3" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="217.8" y1="756.5" x2="185.7" y2="751.3" stroke="#9e8cfc" stroke-opacity="0.19" stroke-width=".8"/>
+  <line x1="217.8" y1="756.5" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="217.8" y1="756.5" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.28" stroke-width=".8"/>
+  <line x1="217.8" y1="756.5" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.30" stroke-width=".8"/>
+  <line x1="63.2" y1="752.6" x2="77.2" y2="775.0" stroke="#9e8cfc" stroke-opacity="0.22" stroke-width=".8"/>
+  <line x1="362.4" y1="745.6" x2="360.6" y2="782.0" stroke="#9e8cfc" stroke-opacity="0.17" stroke-width=".8"/>
+  <line x1="362.4" y1="745.6" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.07" stroke-width=".8"/>
+  <line x1="452.2" y1="754.1" x2="466.8" y2="792.5" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="452.2" y1="754.1" x2="515.0" y2="779.0" stroke="#9e8cfc" stroke-opacity="0.01" stroke-width=".8"/>
+  <line x1="166.6" y1="752.3" x2="185.7" y2="751.3" stroke="#9e8cfc" stroke-opacity="0.25" stroke-width=".8"/>
+  <line x1="166.6" y1="752.3" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.05" stroke-width=".8"/>
+  <line x1="166.6" y1="752.3" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.04" stroke-width=".8"/>
+  <line x1="298.0" y1="775.5" x2="360.6" y2="782.0" stroke="#9e8cfc" stroke-opacity="0.04" stroke-width=".8"/>
+  <line x1="298.0" y1="775.5" x2="257.5" y2="788.5" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="298.0" y1="775.5" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.27" stroke-width=".8"/>
+  <line x1="185.7" y1="751.3" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="185.7" y1="751.3" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.14" stroke-width=".8"/>
+  <line x1="466.8" y1="792.5" x2="515.0" y2="779.0" stroke="#9e8cfc" stroke-opacity="0.10" stroke-width=".8"/>
+  <line x1="360.6" y1="782.0" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.09" stroke-width=".8"/>
+  <line x1="257.5" y1="788.5" x2="310.8" y2="764.9" stroke="#9e8cfc" stroke-opacity="0.06" stroke-width=".8"/>
+  <line x1="257.5" y1="788.5" x2="224.9" y2="769.1" stroke="#9e8cfc" stroke-opacity="0.16" stroke-width=".8"/>
+  <line x1="257.5" y1="788.5" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.13" stroke-width=".8"/>
+  <line x1="515.0" y1="779.0" x2="532.0" y2="767.0" stroke="#9e8cfc" stroke-opacity="0.25" stroke-width=".8"/>
+  <line x1="224.9" y1="769.1" x2="228.2" y2="754.5" stroke="#9e8cfc" stroke-opacity="0.28" stroke-width=".8"/>
+  <circle cx="226.9" cy="790.8" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="278.2" cy="753.3" r="2.1" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="228.9" cy="758.9" r="2.1" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="91.2" cy="766.5" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="306.1" cy="780.3" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="533.0" cy="779.1" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="217.8" cy="756.5" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="63.2" cy="752.6" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="362.4" cy="745.6" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="452.2" cy="754.1" r="1.6" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="166.6" cy="752.3" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="298.0" cy="775.5" r="1.6" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="185.7" cy="751.3" r="1.6" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="466.8" cy="792.5" r="1.6" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="360.6" cy="782.0" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="257.5" cy="788.5" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="515.0" cy="779.0" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="310.8" cy="764.9" r="1.6" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="224.9" cy="769.1" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  <circle cx="228.2" cy="754.5" r="1.2" fill="#68ddfd" fill-opacity=".8"/>
+  <circle cx="532.0" cy="767.0" r="2.1" fill="#9e8cfc" fill-opacity=".8"/>
+  <circle cx="77.2" cy="775.0" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
+  </g>
+  <text x="40" y="44" font-family="Anton, Impact, sans-serif" font-size="27" fill="#ededed" letter-spacing=".02em">REEMPLAZO DE «LA <tspan fill="url(#g)">CAJA NEGRA</tspan>»</text>
+  <text x="40" y="66" class="s">El log de experimentos une los dos sistemas: es evidencia de la especificación, suite de regresión y semilla del fuzzer.</text>
+
+  <!-- Original -->
+  <rect x="40" y="90" width="270" height="86" rx="10" fill="#111110" stroke="#3a3a38" stroke-dasharray="5 4"/>
+  <text x="56" y="114" class="k">FUERA DE NUESTRO CONTROL</text>
+  <text x="56" y="136" class="t" font-weight="700">Servicio original</text>
+  <text x="56" y="156" class="s">POST /msg · POST /__reset · GET /health</text>
+  <text x="56" y="171" class="s">puede cambiar (incidente 15:30)</text>
+
+  <!-- Lab -->
+  <rect x="40" y="250" width="270" height="300" rx="10" fill="#111110" stroke="#232323"/>
+  <text x="56" y="274" class="k">LABORATORIO · lab/</text>
+  <rect x="56" y="288" width="238" height="52" rx="7" fill="#161615" stroke="#2c2c2b"/>
+  <text x="68" y="309" class="t" font-weight="600">probe.py</text>
+  <text x="68" y="327" class="s">hipótesis → request ≤ 10 req/s → log</text>
+  <rect x="56" y="350" width="238" height="52" rx="7" fill="#161615" stroke="#2c2c2b"/>
+  <text x="68" y="371" class="t" font-weight="600">fuzz.py (M2) ↗ reemplazo</text>
+  <text x="68" y="389" class="s">secuencias nuevas, mezcla 40/45/15</text>
+  <rect x="56" y="412" width="238" height="52" rx="7" fill="#161615" stroke="#2c2c2b"/>
+  <text x="68" y="433" class="t" font-weight="600">compare.py (M1, M2)</text>
+  <text x="68" y="451" class="s">regla oficial · primer paso que difiere</text>
+  <rect x="56" y="474" width="238" height="60" rx="7" fill="#161615" stroke="#2c2c2b"/>
+  <text x="68" y="495" class="t" font-weight="600">canario (M4)</text>
+  <text x="68" y="513" class="s">secuencia fija cada hora y 15:35</text>
+  <text x="68" y="528" class="s">detecta cambios del original</text>
+
+  <!-- arrows lab <-> original -->
+  <path d="M150 250 L150 180" class="ln" marker-end="url(#a)"/>
+  <path d="M200 180 L200 250" class="ln" marker-end="url(#a)"/>
+  <text x="212" y="214" class="s">status + cuerpo</text>
+  <text x="58" y="214" class="s">requests</text>
+
+  <!-- Log -->
+  <path d="M370 300 a70 12 0 0 1 140 0 v96 a70 12 0 0 1 -140 0 z" fill="#161615" stroke="url(#gv)"/>
+  <path d="M370 300 a70 12 0 0 0 140 0" fill="none" stroke="#68ddfd"/>
+  <text x="440" y="340" class="t" font-weight="700" text-anchor="middle">experimentos</text>
+  <text x="440" y="356" class="t" font-weight="700" text-anchor="middle">.jsonl</text>
+  <text x="440" y="378" class="s" text-anchor="middle">id · seq · hipótesis</text>
+  <text x="440" y="392" class="s" text-anchor="middle">request · respuesta</text>
+  <path d="M310 318 L366 318" class="ln" marker-end="url(#a)"/>
+  <text x="314" y="310" class="s">registra</text>
+  <path d="M392 404 C380 430 340 440 310 440" class="ln" marker-end="url(#a)"/>
+  <text x="318" y="462" class="s">regresión</text>
+
+  <!-- Spec -->
+  <rect x="338" y="480" width="204" height="70" rx="10" fill="#161615" stroke="#2c2c2b"/>
+  <text x="440" y="508" class="t" font-weight="700" text-anchor="middle">Especificación</text>
+  <text x="440" y="526" class="s" text-anchor="middle">cada fila cita un id</text>
+  <text x="440" y="540" class="s" text-anchor="middle">confirmado/probable/supuesto</text>
+  <path d="M440 410 L440 476" class="ln" marker-end="url(#a)"/>
+
+  <!-- Replacement -->
+  <rect x="580" y="90" width="680" height="560" rx="12" fill="#111110" stroke="url(#gv)" stroke-width="1.6"/>
+  <text x="600" y="116" class="k">REEMPLAZO · app/ · 1 proceso, 1 réplica (Railway)</text>
+
+  <rect x="600" y="132" width="340" height="46" rx="7" class="step"/>
+  <text x="614" y="152" class="t" font-weight="700">Capa HTTP comodín · todos los métodos</text>
+  <text x="614" y="169" class="s">status y bytes exactos · sin 404/405/422 de FastAPI</text>
+  <path d="M770 178 L770 196" class="ln" marker-end="url(#a)"/>
+  <rect x="600" y="198" width="340" height="40" rx="7" class="step"/>
+  <text x="614" y="216" class="t" font-weight="700">Auth → Router</text>
+  <text x="614" y="231" class="s">401 E001 · POST /msg → tubería · otra ruta → 404 E404</text>
+  
+  <path d="M640 238 L640 247" stroke="#68ddfd" stroke-width="1.4"/><path d="M636 243 L640 248 L644 243" fill="none" stroke="#68ddfd" stroke-width="1.4"/><text x="650" y="254" font-size="10.5" fill="#68ddfd">GET /health → 200</text><path d="M880 238 L880 247" stroke="#68ddfd" stroke-width="1.4"/><path d="M876 243 L880 248 L884 243" fill="none" stroke="#68ddfd" stroke-width="1.4"/><text x="890" y="254" font-size="10.5" fill="#68ddfd">POST /__reset → estado inicial</text>
+  <path d="M770 238 L770 256" class="ln" marker-end="url(#a)"/>
+
+  <rect x="600" y="258" width="340" height="300" rx="9" fill="#111110" stroke="#9e8cfc" stroke-opacity=".6" stroke-dasharray="4 3"/>
+  <text x="614" y="278" class="t" font-weight="700">Tubería de validación ordenada</text>
+  <text x="614" y="294" class="s">el orden es configuración (sale del log)</text>
+  <g class="t" font-size="12.5">
+    <rect x="616" y="304" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="321">1 · cuerpo JSON → E100 (400)</text>
+    <rect x="616" y="334" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="351">2 · falta m → E102 · falta control → E103</text>
+    <rect x="616" y="364" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="381">3 · formato del control → E201</text>
+    <rect x="616" y="394" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="411">4 · comando → E301</text>
+    <rect x="616" y="424" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="441">5 · aridad → E302</text>
+    <rect x="616" y="454" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="471">6 · valor del control → E202 (según comando)</text>
+    <rect x="616" y="484" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="501">7 · argumentos (ids, montos)</text>
+    <rect x="616" y="514" width="308" height="26" rx="5" fill="#1b1b1a"/><text x="626" y="531">8 · negocio → E401 · E506 · E507</text>
+  </g>
+  <path d="M902 527 L956 527" class="ln" marker-end="url(#a)" stroke-dasharray="4 3"/><text x="904" y="520" font-size="10" fill="#a1a09a">consulta</text>
+  <path d="M770 558 L770 580" class="ln" marker-end="url(#a)"/>
+  <rect x="600" y="582" width="340" height="50" rx="7" class="step"/>
+  <text x="614" y="602" class="t" font-weight="700">Comandos (puros, reciben el estado)</text>
+  <text x="612" y="619" class="s">PING · ALTA · CONSULTA · DEPOSITO · TRANSFER · ANULA</text>
+
+  <!-- side components -->
+  <rect x="960" y="132" width="280" height="96" rx="9" fill="#161615" stroke="#2c2c2b"/>
+  <text x="976" y="154" class="t" font-weight="700">Perfil de comportamiento</text>
+  <text x="976" y="173" class="s">v_manana · v_tarde (por env)</text>
+  <text x="976" y="189" class="s">orden de la tubería, límites,</text>
+  <text x="976" y="205" class="s">mensajes, comandos activos</text>
+  <text x="976" y="221" class="s">parámetros = diff · lógica = código</text>
+  <path d="M960 200 C950 230 950 300 944 320" class="ln" marker-end="url(#a)" stroke-dasharray="4 3"/>
+
+  <rect x="960" y="270" width="280" height="104" rx="9" fill="#161615" stroke="#2c2c2b"/>
+  <text x="976" y="292" class="t" font-weight="700">Catálogo de respuestas</text>
+  <text x="976" y="311" class="s">errores: código · status · texto exacto</text>
+  <text x="976" y="327" class="s">y plantillas de éxito con rarezas:</text>
+  <text x="976" y="343" class="s">"recieved", "comando desconocido ",</text>
+  <text x="976" y="359" class="s">cuentaId vs cuenta_id</text>
+  <path d="M960 330 L944 400" class="ln" marker-end="url(#a)" stroke-dasharray="4 3"/>
+
+  <rect x="960" y="420" width="280" height="130" rx="9" fill="#161615" stroke="url(#gv)"/>
+  <text x="976" y="442" class="t" font-weight="700">Estado en memoria</text>
+  <text x="976" y="461" class="s">cuentas y saldos</text>
+  <text x="976" y="477" class="s">operaciones y anulaciones</text>
+  <text x="976" y="493" class="s">contadores AC-/OP-</text>
+  <text x="976" y="512" class="s">/__reset → estado inicial</text>
+  <text x="976" y="528" class="s">sin base de datos (D4)</text>
+  <path d="M942 600 C1000 600 1090 580 1095 552" class="ln" marker-end="url(#a)"/>
+  <path d="M1075 552 C1060 575 1000 590 944 592" class="ln" marker-end="url(#a)"/>
+  <text x="1110" y="584" class="s">lee/escribe</text>
+
+  <!-- fuzz -> replacement -->
+  <path d="M290 250 C320 160 480 150 596 156" class="ln" marker-end="url(#a)"/>
+  <text x="322" y="236" class="s">M1/M2: mismas secuencias</text>
+  <text x="322" y="250" class="s">contra el reemplazo local</text>
+
+  <!-- forbidden -->
+  <path d="M580 120 L316 120" stroke="#f87171" stroke-width="1.6" stroke-dasharray="6 4" fill="none" marker-end="url(#r)"/>
+  <text x="330" y="110" font-size="11.5" fill="#f87171" font-weight="700">prohibido: el reemplazo nunca</text><text x="330" y="138" font-size="11.5" fill="#f87171" font-weight="700">llama al original</text>
+
+  <!-- hidden set -->
+  <rect x="580" y="690" width="680" height="70" rx="10" fill="#111110" stroke="#3a3a38" stroke-dasharray="5 4"/>
+  <text x="600" y="714" class="k">EVALUACIÓN</text>
+  <text x="600" y="734" class="t" font-weight="700">Set oculto: 100 tests · reset antes de cada uno · 5 s por paso</text>
+  <text x="600" y="751" class="s">3 corridas: tras M1 100 % + M2 ≥ 95 % · tras el incidente · ~19:30</text>
+  <path d="M920 690 L920 654" class="ln" marker-end="url(#a)"/>
+
+  <!-- legend -->
+  <text x="40" y="600" class="k">MEDICIÓN</text>
+  <text x="40" y="620" class="s">M1 regresión del log: 100 %</text>
+  <text x="40" y="636" class="s">M2 fuzzer diferencial: ≥ 95 % de tests completos</text>
+  <text x="40" y="652" class="s">M3 matriz comando × error × estado: 0 huecos</text>
+  <text x="40" y="668" class="s">M4 canario: 0 diferencias</text>
+  <text x="40" y="684" class="s">M5 latencia p99 &lt; 200 ms</text>
+  <text x="40" y="720" class="s">Tubería: respuestas E100/E102/E103 confirmadas (log 10–12); el orden es provisional.</text>
+</svg>
