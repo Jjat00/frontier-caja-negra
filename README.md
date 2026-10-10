@@ -14,6 +14,7 @@ experimentos que permitieron descubrir su comportamiento.
 | Especificación | [`docs/especificacion.md`](docs/especificacion.md): siete secciones, cada comportamiento con su evidencia y su confianza |
 | Log de experimentos | [`experimentos.jsonl`](experimentos.jsonl): una fila por request al original, con su hipótesis |
 | Systems design (12:00) | [`docs/diseno.md`](docs/diseno.md) y [`docs/arquitectura.png`](docs/arquitectura.png), congelados en la etiqueta `diseno-12h` |
+| Cambios al diseño | [`docs/diseno-cambios.md`](docs/diseno-cambios.md): M6 tras la corrida 1, M3 y M5 medidos, re-corrida por bloques |
 
 ## Qué es el servicio
 
@@ -40,6 +41,9 @@ lab/       laboratorio: habla con el original y mide
   control.py   el dígito de control
   fuzz.py      M2: fuzzer diferencial, tests inéditos con la mezcla del set oficial
   canario.py   M4: secuencia fija contra el original para detectar cambios
+  recorrida.py repite secuencias del log contra el original y compara con lo registrado
+  m3.py        M3: cuenta los comportamientos de la especificación por confianza
+  m5.py        M5: latencia p50/p95/p99 del reemplazo desplegado
   m1.py        M1: regresión del log completo contra el reemplazo local
   compare.py   el comparador oficial (JSON sin orden de claves, texto exacto si no es JSON)
 app/       reemplazo: motor determinista, sin llamadas al original
