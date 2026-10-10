@@ -91,7 +91,9 @@ class Lab:
         if auth != "propio":
             meta["auth"] = auth
         if kw.get("headers"):
-            meta["headers"] = kw["headers"]
+            # el token nunca entra al log: M1 reconstruye cada variante desde `auth`
+            meta["headers"] = {k: v.replace(self.token, "<TOKEN>") if self.token else v
+                               for k, v in kw["headers"].items()}
         while True:
             if content is not None:
                 resp = self.raw(method, path, content=content, **kw)
