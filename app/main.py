@@ -11,11 +11,6 @@ from __future__ import annotations
 
 import json
 import os
-import queue
-import re
-import sys
-import threading
-from urllib.parse import quote
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -31,33 +26,6 @@ load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 # Rutas conocidas: (método, ruta). Cualquier otra combinación da E404 con o sin token
 # (log 7, 8, 9 «GET /msg», 141, 142, 144-148 «/openapi.json», «/docs», «/»).
 RUTAS = {("GET", "/health"): "health", ("POST", "/__reset"): "reset", ("POST", "/msg"): "msg"}
-
-
-TRAZA_MAX_CUERPO = 9000  # bytes del cuerpo que se registran (el servicio rechaza más de 8192)
-_TRAZAS: queue.Queue[str] = queue.Queue(maxsize=10000)
-# «Bearer» seguido de separadores reales, escapados en JSON (\t, \n, \r) o codificados en URL (%XX, +), y el valor.
-_BEARER = re.compile(r"(?i)bearer(?:\s|\\[tnr]|%[0-9A-Fa-f]{2}|\+)+[A-Za-z0-9._~+/=%-]+")
-
-
-def _redactar(texto: str, token: str) -> str:
-    """Redacta un campo de texto antes de serializar la línea (los números no se tocan)."""
-    if token:
-        for forma in {token, json.dumps(token)[1:-1], quote(token, safe="")}:
-            texto = texto.replace(forma, "<TOKEN>")
-    return _BEARER.sub("Bearer <REDACTADO>", texto)
-
-
-def _escritor() -> None:
-    while True:
-        linea = _TRAZAS.get()
-        try:
-            sys.stdout.write(linea + "\n")
-            sys.stdout.flush()
-        except Exception:
-            pass
-
-
-threading.Thread(target=_escritor, name="traza", daemon=True).start()
 
 
 def serializar(status: int, cuerpo: dict, headers: dict | None = None) -> Response:
@@ -90,31 +58,7 @@ class CajaNegra:
         request = Request(scope, receive)
         cuerpo = await request.body()  # único await antes de la sección atómica
         respuesta = self.despachar(request, cuerpo)
-        self.trazar(request, cuerpo, respuesta)
         await respuesta(scope, receive, send)
-
-    def trazar(self, request: Request, cuerpo: bytes, respuesta: Response) -> None:
-        """Una línea JSON por request en stdout (logs de Railway) para estudiar el set oculto después de una corrida.
-        El token configurado y cualquier «Bearer <valor>» se redactan en todos los campos; del header Authorization solo
-        se registra si faltaba, si era el token esperado o si era otro. La escritura va a una cola acotada que vacía un
-        hilo aparte: si se llena, la línea se descarta y el request no espera nunca a stdout."""
-        try:
-            auth = request.headers.get("authorization")
-            r = lambda texto: _redactar(texto, self.token)  # noqa: E731
-            linea = json.dumps({
-                "traza": 1,
-                "metodo": r(request.method),
-                "ruta": r(request.scope.get("raw_path", b"").decode("latin-1") or request.scope["path"]),
-                "query": r(request.scope.get("query_string", b"").decode("latin-1")),
-                "auth": "ninguno" if auth is None else ("propio" if self.autorizado(request) else "otro"),
-                "cuerpo": r(cuerpo[:TRAZA_MAX_CUERPO].decode("utf-8", "backslashreplace")),
-                "bytes": len(cuerpo),
-                "status": respuesta.status_code,
-                "respuesta": r(respuesta.body.decode("utf-8", "replace")),
-            }, ensure_ascii=False)
-            _TRAZAS.put_nowait(linea)
-        except Exception:
-            pass  # cola llena o error de la traza: nunca cambia la respuesta
 
     def despachar(self, request: Request, cuerpo: bytes) -> Response:
         ruta = RUTAS.get((request.method, request.url.path))
@@ -128,6 +72,10 @@ class CajaNegra:
             self.estado = Estado()  # log 134, 139
             return serializar(*cat.ok())
         self.x_req += 1
+        if self.estado.detenido:
+            # Tras HALT;1 todo POST /msg da 503 E599, incluso un JSON inválido (log 7986, 7994); /health sigue en 200
+            # (7993), una ruta desconocida en 404 E404 (7995) y __reset lo recupera (7988-7990).
+            return serializar(*cat.error("E599"), {"X-Req": str(self.x_req)})
         status, body, self.estado = tuberia.procesar(cuerpo, self.perfil, self.estado)
         return serializar(status, body, {"X-Req": str(self.x_req)})
 

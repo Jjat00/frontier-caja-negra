@@ -30,6 +30,7 @@ class Estado:
     bloqueadas: frozenset[str] = frozenset()                 # cuentas con E510
     intentos: dict[str, int] = field(default_factory=dict)   # v2: E510 respondidos por cuenta desde que se bloqueó
     titulares: dict[str, str] = field(default_factory=dict)  # id -> nombre tal como llegó en ALTA
+    detenido: bool = False  # HALT;1 detiene el servicio hasta el siguiente __reset (log 7985-7990)
 
 
 Resultado = tuple[int, dict, Estado]
@@ -167,9 +168,11 @@ def anula(estado: Estado, args: list[str]) -> Resultado:
 
 
 def halt(estado: Estado, args: list[str]) -> Resultado:
-    # Comando oculto: con 1 argumento responde 409 E520 y no cambia el estado (log 1229, 1234-1235).
-    # Visto con AC-0001, AC-1, ac-0001, AC-0002 y AC-0003 (log 1229, 1253, 1563, 1345, 1407). El reenvío
-    # «con confirmación» no se probó a propósito (servicio compartido): SUPUESTO que todo HALT da E520.
+    # Con 1 argumento responde 409 E520 sin cambiar el estado (log 1229, 1234-1235), salvo con «1», que es la
+    # confirmación: detiene el servicio hasta el siguiente __reset y responde 503 E599 (log 7985-7986, 7992).
+    # Otros argumentos medidos que dan E520: AC-0001, SI, YES, CONFIRMAR… (log 1229, 7067-7071).
+    if args[0] == "1":
+        return (*cat.error("E599"), replace(estado, detenido=True))
     return (*cat.error("E520"), estado)
 
 

@@ -29,6 +29,7 @@ ERRORES: dict[str, tuple[int, str]] = {
     "E507": (422, "saldo insuficiente"),     # ejemplo 16
     "E510": (409, "cuenta bloqueada"),       # log 850, 962, 980, 1016, 1021: tras 3 rechazos E506/E507 seguidos
     "E520": (409, "operación destructiva: detiene el servicio; reenvía con confirmación"),  # log 1229
+    "E599": (503, "service halted"),         # log 7985-7986, 7992, 7994: tras HALT;1 hasta el siguiente __reset
 }
 
 
