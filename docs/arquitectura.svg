@@ -350,5 +350,5 @@
   <text x="40" y="652" class="s">M3 matriz comando × error × estado: 0 huecos</text>
   <text x="40" y="668" class="s">M4 canario: 0 diferencias</text>
   <text x="40" y="684" class="s">M5 latencia p99 &lt; 200 ms</text>
-  <text x="40" y="720" class="s">Tubería: respuestas E100/E102/E103 confirmadas (log 10–12); el orden es provisional.</text>
+  <text x="40" y="720" class="s">Tubería: respuestas E100/E102/E103 observadas (log 10–12); el orden es provisional.</text>
 </svg>
