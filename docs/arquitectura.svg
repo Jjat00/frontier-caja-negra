@@ -214,12 +214,12 @@
   <circle cx="77.2" cy="775.0" r="1.2" fill="#5b8cff" fill-opacity=".8"/>
   </g>
   <text x="40" y="44" font-family="Anton, Impact, sans-serif" font-size="27" fill="#ededed" letter-spacing=".02em">REEMPLAZO DE «LA <tspan fill="url(#g)">CAJA NEGRA</tspan>»</text>
-  <text x="40" y="66" class="s">El log de experimentos une los dos sistemas: es evidencia de la especificación, suite de regresión y semilla del fuzzer.</text>
+  <text x="40" y="66" class="s">Un libro mayor bancario mínimo (cuentas, depósitos, transferencias, anulaciones) detrás de un protocolo de texto con dígito de control. El log une laboratorio y reemplazo.</text>
 
   <!-- Original -->
   <rect x="40" y="90" width="270" height="86" rx="10" fill="#111110" stroke="#3a3a38" stroke-dasharray="5 4"/>
   <text x="56" y="114" class="k">FUERA DE NUESTRO CONTROL</text>
-  <text x="56" y="136" class="t" font-weight="700">Servicio original</text>
+  <text x="56" y="136" class="t" font-weight="700">Servicio original (libro mayor)</text>
   <text x="56" y="156" class="s">POST /msg · POST /__reset · GET /health</text>
   <text x="56" y="171" class="s">puede cambiar (incidente 15:30)</text>
 
@@ -274,8 +274,8 @@
   <text x="614" y="169" class="s">status y bytes exactos · sin 404/405/422 de FastAPI</text>
   <path d="M770 178 L770 196" class="ln" marker-end="url(#a)"/>
   <rect x="600" y="198" width="340" height="40" rx="7" class="step"/>
-  <text x="614" y="216" class="t" font-weight="700">Auth → Router</text>
-  <text x="614" y="231" class="s">401 E001 · POST /msg → tubería · otra ruta → 404 E404</text>
+  <text x="614" y="216" class="t" font-weight="700">Router → Auth</text>
+  <text x="614" y="231" class="s">ruta ajena → 404 E404 (aun sin token) · luego 401 E001</text>
   
   <path d="M640 238 L640 247" stroke="#68ddfd" stroke-width="1.4"/><path d="M636 243 L640 248 L644 243" fill="none" stroke="#68ddfd" stroke-width="1.4"/><text x="650" y="254" font-size="10.5" fill="#68ddfd">GET /health → 200</text><path d="M880 238 L880 247" stroke="#68ddfd" stroke-width="1.4"/><path d="M876 243 L880 248 L884 243" fill="none" stroke="#68ddfd" stroke-width="1.4"/><text x="890" y="254" font-size="10.5" fill="#68ddfd">POST /__reset → estado inicial</text>
   <path d="M770 238 L770 256" class="ln" marker-end="url(#a)"/>
