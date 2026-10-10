@@ -24,9 +24,11 @@ ROOT = Path(__file__).resolve().parents[1]
 os.environ.setdefault("PERFIL", "v_manana")
 
 from app.main import CajaNegra  # noqa: E402
+from app.perfiles import PERFILES  # noqa: E402
 from lab.compare import comparar_paso, como_texto  # noqa: E402
 
 TOKEN_INVALIDO = "token-invalido-m1"
+PRIMERA_FILA_V2 = 6040  # canario-1600: primera secuencia registrada con la versión 2
 TOKEN_FICTICIO = "token-ficticio-m1"  # M1 no necesita el token real
 
 # Variante de auth del log -> header que se manda (None = sin header).
@@ -92,6 +94,10 @@ def main() -> None:
     total = iguales = 0
     fallos = []
     for seq, filas in cargar().items():
+        # Cada secuencia se repite con la versión del servicio vigente cuando se registró: hasta la fila 6039 la 1
+        # (v_manana, incluidos los 20 ejemplos) y desde el canario de las 16:00 (fila 6040) la 2 (v_tarde).
+        primera = filas[0]["id"]
+        app.perfil = PERFILES["v_tarde" if isinstance(primera, int) and primera >= PRIMERA_FILA_V2 else "v_manana"]
         cliente.post("/__reset", headers={"Authorization": f"Bearer {token}"})
         for fila in filas:
             r = enviar(cliente, token, fila)

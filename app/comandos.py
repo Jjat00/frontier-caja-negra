@@ -28,6 +28,8 @@ class Estado:
     sig_op: int = 1       # OP-0001 tras reset (ejemplo 6; log 152)
     rechazos: dict[str, int] = field(default_factory=dict)  # rechazos seguidos de TRANSFER por origen
     bloqueadas: frozenset[str] = frozenset()                 # cuentas con E510
+    intentos: dict[str, int] = field(default_factory=dict)   # v2: E510 respondidos por cuenta desde que se bloqueó
+    titulares: dict[str, str] = field(default_factory=dict)  # id -> nombre tal como llegó en ALTA
 
 
 Resultado = tuple[int, dict, Estado]
@@ -59,15 +61,24 @@ def alta(estado: Estado, args: list[str]) -> Resultado:
     # guion, repetidos y un espacio solo (log 767-782). Que no haya otras restricciones es SUPUESTO.
     # Ids secuenciales con relleno a 4 dígitos (ejemplos 3-4); más allá de AC-9999, SUPUESTO.
     cuenta_id = f"AC-{estado.sig_cuenta:04d}"
-    nuevo = replace(estado, cuentas={**estado.cuentas, cuenta_id: 0}, sig_cuenta=estado.sig_cuenta + 1)
+    nuevo = replace(estado, cuentas={**estado.cuentas, cuenta_id: 0}, sig_cuenta=estado.sig_cuenta + 1,
+                    titulares={**estado.titulares, cuenta_id: args[0]})
     return (*cat.cuenta_creada(cuenta_id), nuevo)
 
 
-def consulta(estado: Estado, args: list[str]) -> Resultado:
+def centesimas(monto: int) -> str:
+    """v2: el saldo en centésimas como texto con dos decimales: 0 -> «0.00», 5 -> «0.05», -55 -> «-0.55»,
+    10000000059 -> «100000000.59» (log 6112-6123, 6052, 6073-6074)."""
+    signo = "-" if monto < 0 else ""
+    return f"{signo}{abs(monto) // 100}.{abs(monto) % 100:02d}"
+
+
+def consulta(estado: Estado, args: list[str], *, saldo_centesimas: bool = False) -> Resultado:
     cuenta = args[0]
     if cuenta not in estado.cuentas:  # ejemplo 15; texto exacto, sin validar formato (log 1447, 870)
         return (*cat.error("E401"), estado)
-    return (*cat.saldo(cuenta, estado.cuentas[cuenta]), estado)  # ejemplos 5, 8, 11, 19
+    monto = estado.cuentas[cuenta]
+    return (*cat.saldo(cuenta, centesimas(monto) if saldo_centesimas else monto), estado)  # ejemplos 5, 8, 11, 19
 
 
 def deposito(estado: Estado, args: list[str]) -> Resultado:
@@ -84,7 +95,9 @@ def deposito(estado: Estado, args: list[str]) -> Resultado:
     # cuenta (log 1009-1021) y la desbloquea (log 1029-1031, 1061-1063). Una transferencia
     # entrante o una ANULA no la desbloquean (log 1040-1041, 1049-1050).
     rechazos = {k: v for k, v in estado.rechazos.items() if k != cuenta}
-    estado = replace(estado, rechazos=rechazos, bloqueadas=estado.bloqueadas - {cuenta})
+    # v2: desbloquear también reinicia "intentos": tras volver a bloquear empieza en 1 (log 6142-6146).
+    intentos = {k: v for k, v in estado.intentos.items() if k != cuenta}
+    estado = replace(estado, rechazos=rechazos, bloqueadas=estado.bloqueadas - {cuenta}, intentos=intentos)
     return _nueva_op(estado, Operacion("DEPOSITO", cuenta, monto), cuentas)  # ejemplos 6, 18
 
 
@@ -99,7 +112,8 @@ def _rechazo(estado: Estado, origen: str, codigo: str, umbral: int) -> Resultado
     return (*cat.error(codigo), nuevo)
 
 
-def transfer(estado: Estado, args: list[str], *, limite: int, rechazos_bloqueo: int) -> Resultado:
+def transfer(estado: Estado, args: list[str], *, limite: int, rechazos_bloqueo: int,
+             e510_intentos: bool = False, sin_limite_mismo_titular: bool = False) -> Resultado:
     origen, destino, texto = args
     # Orden E303 -> E304 -> E401 -> E510 -> E506 -> E507.
     monto = _monto(texto)
@@ -111,8 +125,18 @@ def transfer(estado: Estado, args: list[str], *, limite: int, rechazos_bloqueo: 
         # Antes del límite (log 817) y de E510 (log 1687); no cuenta como rechazo.
         return (*cat.error("E401"), estado)
     if origen in estado.bloqueadas:  # antes de E506 (log 850-861) y de E507 (log 1016, 1050)
+        if e510_intentos:
+            # v2: 423 con "intentos", que cuenta los E510 de esa cuenta (1, 2, 3, 4, 5… sin tope medido). No suman
+            # un E401 ni una CONSULTA de la cuenta bloqueada; es por cuenta (log 6065-6067, 6131-6141).
+            n = estado.intentos.get(origen, 0) + 1
+            nuevo = replace(estado, intentos={**estado.intentos, origen: n})
+            return 423, {"error": "E510", "mensaje": "cuenta bloqueada", "intentos": n}, nuevo
         return (*cat.error("E510"), estado)
-    if monto > limite:  # 100000 pasa, 100001 da E506 (log 900-954); antes de E507 (log 805, 818)
+    # v2: entre cuentas con el mismo nombre de titular (comparación exacta: mayúsculas, espacios y tildes cuentan) no
+    # aplica el límite y el rechazo, si lo hay, es E507 (log 6573, 6619-6622, 6631-6637). No se sabe si ya existía en
+    # la versión 1: el log de la mañana no tiene ningún caso que lo pruebe.
+    exento = sin_limite_mismo_titular and estado.titulares.get(origen) == estado.titulares.get(destino)
+    if monto > limite and not exento:  # 100000 pasa, 100001 da E506 (log 900-954); antes de E507 (log 805, 818)
         return _rechazo(estado, origen, "E506", rechazos_bloqueo)
     if estado.cuentas[origen] < monto:  # ejemplo 16
         return _rechazo(estado, origen, "E507", rechazos_bloqueo)

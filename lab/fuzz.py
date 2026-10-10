@@ -22,7 +22,7 @@ from collections import Counter
 from pathlib import Path
 
 warnings.filterwarnings("ignore", message=".*httpx.*")
-os.environ.setdefault("PERFIL", "v_manana")
+os.environ.setdefault("PERFIL", "v_tarde")  # versión vigente (2) desde las 16:00
 
 from lab.compare import comparar_paso, como_texto  # noqa: E402
 from lab.control import control, firmar  # noqa: E402
@@ -32,6 +32,9 @@ COMANDOS = ["PING", "ALTA", "CONSULTA", "DEPOSITO", "TRANSFER", "ANULA"]
 CASI = ["CONSULTB", "DEPOSIT", "TRANSFR", "ANULAR", "ALT", "PIN", "SALDOS", "FOO", "HELP", "RETIRO", "consulta",
         "Deposito", "HALT"]
 MONTOS_OK = [1, 5, 50, 700, 999, 1500, 25000, 40000, 99999, 100000, 250000, 1000000, 9999999999]
+# Desde la semilla 3 (versión 2) se suman los bordes del límite nuevo; las semillas 1 y 2 conservan su generador
+# para que --solo-reemplazo reproduzca exactamente lo registrado.
+MONTOS_OK_V2 = sorted(MONTOS_OK + [49999, 50000, 50001])
 MONTOS_FEOS = ["0", "-5", "5.5", "007", "abc", "100001", "120000", "10000000000", "1e3", " 5", "+5"]
 NOMBRES = ["Lucia", "Mateo", "Ana Maria", "José", "123", "x", "a-b", "Ñandú", " "]
 
@@ -39,8 +42,9 @@ NOMBRES = ["Lucia", "Mateo", "Ana Maria", "José", "123", "x", "a-b", "Ñandú",
 class Gen:
     """Generador de pasos que sigue un modelo aproximado del estado para que haya cuentas y operaciones reales."""
 
-    def __init__(self, rnd: random.Random):
+    def __init__(self, rnd: random.Random, montos: list[int] = MONTOS_OK):
         self.r = rnd
+        self.montos = montos
         self.cuentas = 0
         self.ops = 0
 
@@ -58,7 +62,7 @@ class Gen:
     def monto(self, feo: float) -> str:
         if self.r.random() < feo:
             return self.r.choice(MONTOS_FEOS)
-        return str(self.r.choice(MONTOS_OK))
+        return str(self.r.choice(self.montos))
 
     def valido(self) -> str:
         cmd = self.r.choices(COMANDOS, weights=[1, 3, 3, 3, 4, 2])[0]
@@ -143,7 +147,7 @@ def generar(semilla: int, n: int) -> list[list[dict]]:
     for i in range(n):
         f = i / n
         largo = 1 if f < 0.4 else rnd.randint(2, 5) if f < 0.85 else rnd.randint(6, 12)
-        g = Gen(rnd)
+        g = Gen(rnd, MONTOS_OK if semilla < 3 else MONTOS_OK_V2)
         pasos = []
         # en secuencias largas se arranca con cuentas y saldo para que el negocio tenga sustancia
         if largo >= 3 and rnd.random() < 0.7:
@@ -249,6 +253,9 @@ def main() -> None:
     originales = cargar_original(a.semilla, tests) if a.solo_reemplazo else correr_original(a.semilla, tests)
     token = os.environ.get("TOKEN") or __import__("dotenv").dotenv_values(ROOT / ".env").get("TOKEN")
     h = {"Authorization": f"Bearer {token}"}
+    if a.solo_reemplazo and not a.url:
+        # una semilla registrada con la versión 1 (antes de la fila 6040) se repite con v_manana
+        os.environ["PERFIL"] = "v_manana" if originales[0][0]["id"] < 6040 else "v_tarde"
     cli = cliente_reemplazo(a.url)
     ok = 0
     fallos_cmd: Counter = Counter()

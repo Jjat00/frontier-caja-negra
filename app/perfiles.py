@@ -1,13 +1,14 @@
 """Perfiles de comportamiento por versión del servicio (diseño D3 y D5).
 
 Un perfil fija el orden de la tubería, los comandos activos con su aridad y los límites.
-Se elige con la variable de entorno PERFIL (por defecto v_manana).
+Se elige con la variable de entorno PERFIL (por defecto v_tarde, la versión vigente desde las 16:00; v_manana es la
+versión 1 y la usa M1 para las filas del log anteriores a la 6040).
 """
 
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import partial
 from typing import Callable
 
@@ -72,8 +73,28 @@ V_MANANA = Perfil(
     distancia_sugerencia=2,  # Levenshtein <= 2 (log 733-755); empates SUPUESTO (ver tuberia.sugerir)
 )
 
-PERFILES = {p.nombre: p for p in (V_MANANA,)}
+# Versión 2 (incidente, ticket #FR-0153; en línea confirmada a las 16:00, canario-1600, log 6040-6081). Cuatro
+# diferencias frente a v_manana: límite, formato del saldo y E510 (los cambios del ticket) y la exención por titular,
+# hallada en la versión 2 sin evidencia de si ya existía en la 1 (ver comandos.transfer).
+LIMITE_TRANSFER_TARDE = 50000  # 50000 pasa y 50001 da E506 (log 6106-6109); en la versión 1, 100000 pasaba (825, 1740) y 100001 daba E506 (954)
+V_TARDE = replace(
+    V_MANANA,
+    nombre="v_tarde",
+    comandos={
+        **V_MANANA.comandos,
+        # saldo como texto con dos decimales, en centésimas (log 6052, 6112-6123)
+        "CONSULTA": Comando(1, partial(c.consulta, saldo_centesimas=True)),
+        # límite 50000 y E510 con status 423 y "intentos" (log 6065-6067, 6131-6146)
+        "TRANSFER": Comando(3, partial(c.transfer, limite=LIMITE_TRANSFER_TARDE,
+                                       rechazos_bloqueo=RECHAZOS_BLOQUEO_MANANA, e510_intentos=True,
+                                       sin_limite_mismo_titular=True)),
+    },
+)
+
+PERFILES = {p.nombre: p for p in (V_MANANA, V_TARDE)}
+# El set oficial corre contra la versión vigente a las 20:00 (MATERIAL.md): la versión 2 por defecto.
+PERFIL_POR_DEFECTO = "v_tarde"
 
 
 def activo() -> Perfil:
-    return PERFILES[os.environ.get("PERFIL", "v_manana")]
+    return PERFILES[os.environ.get("PERFIL", PERFIL_POR_DEFECTO)]

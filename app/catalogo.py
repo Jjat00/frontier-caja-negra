@@ -49,7 +49,7 @@ def cuenta_creada(cuenta_id: str) -> Respuesta:
     return 201, {"cuentaId": cuenta_id}  # ejemplos 3-4
 
 
-def saldo(cuenta_id: str, monto: int) -> Respuesta:
+def saldo(cuenta_id: str, monto: int | str) -> Respuesta:
     return 200, {"cuenta_id": cuenta_id, "saldo": monto}  # ejemplo 5
 
 

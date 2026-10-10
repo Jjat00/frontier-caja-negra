@@ -21,7 +21,7 @@ import sys
 import warnings
 
 warnings.filterwarnings("ignore", message=".*httpx.*")
-os.environ.setdefault("PERFIL", "v_manana")
+os.environ.setdefault("PERFIL", "v_tarde")  # versión vigente (2) desde las 16:00
 
 from lab.compare import comparar_paso, como_texto  # noqa: E402
 from lab.control import firmar  # noqa: E402
