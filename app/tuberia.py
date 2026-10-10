@@ -59,6 +59,10 @@ def _profundidad(texto: str) -> int:
     return maximo
 
 
+def _constante(nombre: str):
+    raise ValueError(nombre)
+
+
 def json_valido(ctx: Ctx) -> Respuesta | None:
     try:
         texto = ctx.cuerpo.decode("utf-8")
@@ -66,7 +70,9 @@ def json_valido(ctx: Ctx) -> Respuesta | None:
         # La profundidad se mide sin recursión antes de parsear.
         if _profundidad(texto) > ctx.perfil.max_anidamiento:
             return cat.error("E100")
-        ctx.datos = json.loads(texto)
+        # JSON estricto: NaN da E100 en el original (medido, log 2357, 2373); Infinity y -Infinity se rechazan
+        # por la misma regla (inferido, no medido).
+        ctx.datos = json.loads(texto, parse_constant=_constante)
     except Exception:
         # log 10, 1169, 1176, 1181. Anidamiento extremo (RecursionError) también es E100 (log 1663);
         # SUPUESTO: cualquier otra excepción del parseo, igual, para que ningún cuerpo dé 500.
@@ -92,8 +98,14 @@ def control_presente(ctx: Ctx) -> Respuesta | None:
     # Sin distinguir mayúsculas: medido en CONSULTA (ejemplo 11; log 1447), PING (log 730),
     # TRANSFER (log 1404, 1550), ANULA (log 1655), DEPOSITO (log 1768), ALTA (log 2139) y HALT (log 2267).
     # El nombre no se recorta (log 731-732).
-    ctx.comando = ctx.perfil.comandos.get(ctx.nombre.upper())
+    ctx.comando = ctx.perfil.comandos.get(mayus_ascii(ctx.nombre))
     return None
+
+
+def mayus_ascii(texto: str) -> str:
+    """Mayúsculas solo en ASCII, sin expandir: «PıNG» no es PING (log 3516) y «AßNG» queda a distancia 2 de
+    PING (log 2444, 3521), mientras que str.upper() daría «PING» y «ASSNG»."""
+    return "".join(ch.upper() if ch.isascii() else ch for ch in texto)
 
 
 def segmento_vacio(ctx: Ctx) -> Respuesta | None:
@@ -158,7 +170,7 @@ def sugerir(nombre: str, comandos: dict, distancia: int) -> str | None:
     Log 450, 731-732 (distancia 1), 734-738 (distancia 2), 740-742 (3 o más: sin sugerencia).
     SUPUESTO: en empate gana el primero en el orden del perfil (no medido).
     """
-    candidatos = [(_levenshtein(nombre.upper(), c), c) for c in comandos]
+    candidatos = [(_levenshtein(mayus_ascii(nombre), c), c) for c in comandos]
     d, mejor = min(candidatos, key=lambda x: x[0])
     return mejor if d <= distancia else None
 

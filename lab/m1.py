@@ -38,6 +38,7 @@ VARIANTES_AUTH = {
     "esquema_token": "Token {t}",
     "sin_esquema": "{t}",
     "doble_espacio": "Bearer  {t}",
+    "token_equipo": "Bearer {otro}",  # log 4467: el original no acepta el token del equipo; localmente es otro token
 }
 
 
@@ -63,9 +64,12 @@ def enviar(cliente: TestClient, token: str, fila: dict):
     # El Authorization guardado en el log se ignora (está redactado): se reconstruye desde `auth`.
     headers = {k: v for k, v in (fila.get("headers") or {}).items() if k.lower() != "authorization"}
     auth = fila.get("auth", "propio")
-    if auth not in VARIANTES_AUTH:
+    if auth.startswith("variante: "):  # e17: la plantilla del header va en el propio campo
+        valor = auth.removeprefix("variante: ")
+    elif auth not in VARIANTES_AUTH:
         raise ValueError(f"fila {fila['id']}: variante de auth desconocida {auth!r}")
-    valor = VARIANTES_AUTH[auth]
+    else:
+        valor = VARIANTES_AUTH[auth]
     if valor is not None:
         headers["Authorization"] = valor.format(t=token, otro=TOKEN_INVALIDO)
     request = fila.get("request")

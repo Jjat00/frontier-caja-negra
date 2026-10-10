@@ -147,3 +147,10 @@ def halt(estado: Estado, args: list[str]) -> Resultado:
     # Visto con AC-0001, AC-1, ac-0001, AC-0002 y AC-0003 (log 1229, 1253, 1563, 1345, 1407). El reenvío
     # «con confirmación» no se probó a propósito (servicio compartido): SUPUESTO que todo HALT da E520.
     return (*cat.error("E520"), estado)
+
+
+def notas(estado: Estado, args: list[str]) -> Resultado:
+    # Comando oculto: TOTAL lo sugiere (log 3301); aridad 0 (log 3479-3483), valida el control (log 3490-3491),
+    # sin distinguir mayúsculas (log 3492). La respuesta es fija (log 3480, 3499, 3501). La ruta que menciona
+    # la nota no se llamó: ver Riesgos en la especificación.
+    return (*cat.notas(), estado)

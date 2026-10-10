@@ -61,8 +61,11 @@ V_MANANA = Perfil(
                                        rechazos_bloqueo=RECHAZOS_BLOQUEO_MANANA)),
         "ANULA": Comando(1, c.anula),
         # Oculto: aparece como sugerencia (log 1125, 1208, 1210), aridad 1 (log 1228-1231) y valida
-        # el control (log 1232-1233). SUPUESTO: va último para los empates de la sugerencia.
+        # el control (log 1232-1233). SUPUESTO: va después de los seis visibles en los empates de la sugerencia.
         "HALT": Comando(1, c.halt),
+        # Oculto: TOTAL, NOTA, NOTE, NOTES y NOTAR lo sugieren (log 3301, 3484-3487). Aridad 0 (log 3479-3483).
+        # SUPUESTO: su lugar en los empates de la sugerencia (va después de HALT).
+        "NOTAS": Comando(0, c.notas),
     },
     max_cuerpo=8192,         # bytes; 8193 da E101 (log 1702-1704)
     max_anidamiento=20,      # 20 niveles se parsean y 21 dan E100, en arrays y objetos (log 1708-1720)
